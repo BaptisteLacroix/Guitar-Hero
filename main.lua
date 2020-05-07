@@ -107,7 +107,7 @@ function love.load()
 	core["score"] = 0
 	core["combo"] = 0
 	core["startTime"] = 0
-	core["logo2"] = love.graphics.newImage("5.png")
+	core["logo2"] = love.graphics.newImage("/img/5.png")
 	core["endTime"] = 215
 	love.keyboard.setKeyRepeat(false)
 	core["q"] = 0
@@ -115,7 +115,7 @@ function love.load()
 	core["d"] = 0
 	core["f"] = 0
 end
-	core["logo"] = love.graphics.newImage("2.jpg") -- affichage image
+	core["logo"] = love.graphics.newImage("/img/2.jpg") -- affichage image
 
 function key.checkClicked(x)
 	for i = 0, core.touch do
@@ -153,8 +153,8 @@ function love.update(dt)
 		key.appendBuffer()
 		key.scrolling()
 		memoryCleaner()
-		--core["music"] = love.audio.newSource("AlanWalkerGuitar.mp3", 'stream')
-		--love.audio.play(core.music)
+		core["music"] = love.audio.newSource("/sound/AlanWalkerGuitar.mp3", 'stream')
+		love.audio.play(core.music)
 	end
 	if core.scene == 0 then
 		if love.mouse.isDown(1) then
