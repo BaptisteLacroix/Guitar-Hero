@@ -10,8 +10,8 @@ This is a Lua version of the game **Guitar Hero**.
 
 ### Menu
 
-<img src="C:\Users\k\Desktop\Langage informatique\programmation\Lua\Guitar Hero\Guitar-Hero\img\ReadMe\imageMenu.jpg" alt="Image Menu" style="zoom:65%;" />
+<img src="./img/ReadMe/imageMenu.jpg" alt="Image Menu" style="zoom:65%;" />
 
 ### In-game
 
-<img src="C:\Users\k\Desktop\Langage informatique\programmation\Lua\Guitar Hero\Guitar-Hero\img\ReadMe\imageJeu.jpg" alt="Image Jeu" style="zoom:65%;" />
+<img src="./img/ReadMe/imageJeu.jpg" alt="Image Jeu" style="zoom:65%;" />
