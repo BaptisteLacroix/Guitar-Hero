@@ -86,7 +86,7 @@ function interfaceGameMenu.load()
     table.insert(buttons, interfaceGameMenu.newButton(
             "Settings",
             function()
-                -- CURRENT_SCREEN == "interfaceGameSettings"
+                CURRENT_SCREEN == "interfaceGameSettings"
             end))
 
     table.insert(buttons, interfaceGameMenu.newButton(

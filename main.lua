@@ -79,7 +79,11 @@ function love.keypressed(mykey)
 		interfaceGameMenu.keypressed(mykey)
 	elseif CURRENT_SCREEN == "interfaceGameIn" then
 		interfaceGameIn.keypressed(mykey)
-	elseif mykey == "escape" then
-		CURRENT_SCREEN = "interfaceGameMenu"
+	end
+end
+
+function love.keyreleased(key)
+	if CURRENT_SCREEN == "interfaceGameIn" then
+		interfaceGameIn.keyreleased(key)
 	end
 end
