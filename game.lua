@@ -149,7 +149,7 @@ function interfaceGameIn.draw()
         -- If object exists, print it wish his right color.
         if (buf[i] ~= nil) then
             love.graphics.setColor(255, 0,0, 1)
-            love.graphics.rectangle("fill", buf[i].x, buf[i].y, 50, 30)
+            love.graphics.rectangle("fill", buf[i].x, buf[i].y, 60, 30)
             if buf[i].y == 850 and core.score > 0 then
                 core.score = core.score - 10
             end
