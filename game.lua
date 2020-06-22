@@ -116,7 +116,7 @@ end
 
 function key.checkClicked(x)
     for i = 0, core.touch do
-        if (buf[i] ~= nil and buf[i].x == x and buf[i].y > 500 and buf[i].y < 550) then
+        if (buf[i] ~= nil and buf[i].x == x and buf[i].y > 780 and buf[i].y < 830) then
             buf[i].y = nil
             buf[i].x = nil
             buf[i] = nil
@@ -140,6 +140,10 @@ function key.fadeOut()
 end
 
 function interfaceGameIn.draw()
+
+    --local mouseX, mouseY = love.mouse.getPosition()
+    --print(mouseX,mouseY)
+
     love.graphics.draw(core.imgGameBackground, 0, 0)
     love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 100, 100)
     core.ui()
