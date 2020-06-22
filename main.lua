@@ -3,11 +3,17 @@
 local config = require("config")
 interfaceGameMenu = require("menu")
 interfaceGameIn = require("game")
+interfaceGameInEasy = require("./difficulty/gameEasy")
+interfaceGameInHard = require(".difficulty/gameHard")
+interfaceGameSettings = require("./settings/settings")
+interfaceGameInDifficulty = require("./settings/settingsDifficulty")
+
 
 local core = config.getCore()
 local key = config.getKey()
 local buf = config.getBuf()
 local buttons = config.getButtons()
+local currentInterface = {}
 
 
 -- Color multipler
@@ -51,39 +57,71 @@ function love.load()
 	success = love.window.setMode(1920,1080)
 	--constantes
 	CURRENT_SCREEN = "interfaceGameMenu"
+	--currentInterface = interfaceGameMenu
 
 	--import states.load
 	config.load()
 	interfaceGameMenu.load()
+	interfaceGameSettings.load()
+	interfaceGameInDifficulty.load()
 	--interfaceGameIn.load()
 end
 
 function love.update(dt)
+	--currentInterface.update(dt)
 	if CURRENT_SCREEN == "interfaceGameMenu" then
 		interfaceGameMenu.update(dt)
+	elseif CURRENT_SCREEN == "interfaceGameSettings" then
+		interfaceGameSettings.update(dt)
+	elseif CURRENT_SCREEN == "interfaceGameInDifficulty" then
+		interfaceGameInDifficulty.update(dt)
 	elseif CURRENT_SCREEN == "interfaceGameIn" then
 		interfaceGameIn.update(dt)
+	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
+		interfaceGameInEasy.update(dt)
+	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
+		interfaceGameInHard.update(dt)
 	end
 end
 
 function love.draw()
 	if CURRENT_SCREEN == "interfaceGameMenu" then
 		interfaceGameMenu.draw()
+	elseif CURRENT_SCREEN == "interfaceGameSettings" then
+		interfaceGameSettings.draw()
+	elseif CURRENT_SCREEN == "interfaceGameInDifficulty" then
+		interfaceGameInDifficulty.draw()
 	elseif CURRENT_SCREEN == "interfaceGameIn" then
 		interfaceGameIn.draw()
+	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
+		interfaceGameInEasy.draw()
+	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
+		interfaceGameInHard.draw()
 	end
 end
 
 function love.keypressed(mykey)
 	if CURRENT_SCREEN == "interfaceGameMenu" then
 		interfaceGameMenu.keypressed(mykey)
+	elseif CURRENT_SCREEN == "interfaceGameSettings" then
+		interfaceGameSettings.keypressed(mykey)
+	elseif CURRENT_SCREEN == "interfaceGameInDifficulty" then
+		interfaceGameInDifficulty.keypressed(mykey)
 	elseif CURRENT_SCREEN == "interfaceGameIn" then
 		interfaceGameIn.keypressed(mykey)
+	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
+		interfaceGameInEasy.keypressed(mykey)
+	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
+		interfaceGameInHard.keypressed(mykey)
 	end
 end
 
 function love.keyreleased(key)
 	if CURRENT_SCREEN == "interfaceGameIn" then
 		interfaceGameIn.keyreleased(key)
+	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
+		interfaceGameInEasy.keyreleased(key)
+	elseif CURRENT_SCREEN == "interfaceGameInHard" then
+		interfaceGameInHard.keyreleased(key)
 	end
 end

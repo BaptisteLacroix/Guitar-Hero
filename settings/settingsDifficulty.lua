@@ -1,17 +1,17 @@
-local config = require("config")
+local config = require("./config")
 local core = config.getCore()
 local key = config.getKey()
 local buf = config.getBuf()
 local buttons = config.getButtons()
 
-local interfaceGameMenu = {}
+local interfaceGameInDifficulty = {}
 
 local buttons = {}
 local font = nil
 
 BUTTON_HEIGHT = 64
 
-function interfaceGameMenu.newButton(text, fn)
+function interfaceGameInDifficulty.newButton()
     return{
         text = text,
         fn = fn,
@@ -21,7 +21,7 @@ function interfaceGameMenu.newButton(text, fn)
     }
 end
 
-function interfaceGameMenu.draw()
+function interfaceGameInDifficulty.draw()
     local button_width = 1920 * (1/3)
     local margin = 16
 
@@ -74,34 +74,30 @@ function interfaceGameMenu.draw()
     end
 end
 
-function interfaceGameMenu.load()
+function interfaceGameInDifficulty.load()
     font = love.graphics.newFont(32)
 
-    table.insert(buttons, interfaceGameMenu.newButton(
-            "Start Game",
+    table.insert(buttons, interfaceGameInDifficulty.newButton(
+            "Easy",
+            function()
+                CURRENT_SCREEN = "interfaceGameInEasy"
+            end))
+
+    table.insert(buttons, interfaceGameInDifficulty.newButton(
+            "Normal",
             function()
                 CURRENT_SCREEN = "interfaceGameIn"
             end))
 
-    table.insert(buttons, interfaceGameMenu.newButton(
-            "Settings",
+    table.insert(buttons, interfaceGameInDifficulty.newButton(
+            "Hard",
             function()
-                CURRENT_SCREEN = "interfaceGameSettings"
-            end))
-
-    table.insert(buttons, interfaceGameMenu.newButton(
-            "Exit",
-            function()
-                love.event.quit(0)
+                CURRENT_SCREEN = "interfaceGameInHard"
             end))
 end
 
-function interfaceGameMenu.update(dt)
-    if CURRENT_SCREEN == "interfaceGameIn" then
-        interfaceGameIn.draw()
-    elseif CURRENT_SCREEN == "interfaceGameSettings" then
-        interfaceGameSettings.draw()
-    end
+function interfaceGameInDifficulty.update(dt)
+
 end
 
-return interfaceGameMenu
+return interfaceGameInDifficulty

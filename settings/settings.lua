@@ -1,17 +1,17 @@
-local config = require("config")
+local config = require("./config")
 local core = config.getCore()
 local key = config.getKey()
 local buf = config.getBuf()
 local buttons = config.getButtons()
 
-local interfaceGameMenu = {}
+local interfaceGameSettings = {}
 
 local buttons = {}
 local font = nil
 
 BUTTON_HEIGHT = 64
 
-function interfaceGameMenu.newButton(text, fn)
+function interfaceGameSettings.newButton(text, fn)
     return{
         text = text,
         fn = fn,
@@ -21,7 +21,7 @@ function interfaceGameMenu.newButton(text, fn)
     }
 end
 
-function interfaceGameMenu.draw()
+function interfaceGameSettings.draw()
     local button_width = 1920 * (1/3)
     local margin = 16
 
@@ -74,34 +74,32 @@ function interfaceGameMenu.draw()
     end
 end
 
-function interfaceGameMenu.load()
+function interfaceGameSettings.load()
     font = love.graphics.newFont(32)
 
-    table.insert(buttons, interfaceGameMenu.newButton(
-            "Start Game",
+    table.insert(buttons, interfaceGameSettings.newButton(
+            "Difficulty",
             function()
-                CURRENT_SCREEN = "interfaceGameIn"
+                CURRENT_SCREEN = "interfaceGameInDifficulty"
             end))
 
-    table.insert(buttons, interfaceGameMenu.newButton(
-            "Settings",
+    table.insert(buttons, interfaceGameSettings.newButton(
+            "Song",
             function()
-                CURRENT_SCREEN = "interfaceGameSettings"
+                CURRENT_SCREEN = "interfaceGameSong"
             end))
 
-    table.insert(buttons, interfaceGameMenu.newButton(
-            "Exit",
+    table.insert(buttons, interfaceGameSettings.newButton(
+            "Back",
             function()
-                love.event.quit(0)
+                CURRENT_SCREEN = "interfaceGameMenu"
             end))
 end
 
-function interfaceGameMenu.update(dt)
-    if CURRENT_SCREEN == "interfaceGameIn" then
-        interfaceGameIn.draw()
-    elseif CURRENT_SCREEN == "interfaceGameSettings" then
-        interfaceGameSettings.draw()
+function interfaceGameSettings.update(dt)
+    if CURRENT_SCREEN == "interfaceGameInDifficulty" then
+        interfaceGameInDifficulty.draw()
     end
 end
 
-return interfaceGameMenu
+return interfaceGameSettings
