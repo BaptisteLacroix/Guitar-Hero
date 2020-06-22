@@ -16,16 +16,12 @@ function key.appendBuffer()
         buf [core.touch].y = -50
     end
 end
-if (math.random(1500) < 25 ) then
-    buf[core.touch].anim = 1
-end
-
 
 function key.scrolling()
     for i =0,core.touch do
         -- Scrolling objects
         if (buf[i] ~= nil) then
-            buf[i].y = buf[i].y + 3
+            buf[i].y = buf[i].y + 3 --speed
         end
         -- Reset objects
         if (buf[i] ~= nil and buf[i].y == 600) then
@@ -36,9 +32,24 @@ function key.scrolling()
     end
 end
 
+function core.ui()
+    love.graphics.setColor(255, 255, 255, 0.5) -- couleurs corde de la guitare
+    love.graphics.rectangle("fill", 800, 0, 60, 1080)
+    love.graphics.rectangle("fill", 880, 0, 60, 1080)
+    love.graphics.rectangle("fill", 960, 0, 60, 1080)
+    love.graphics.rectangle("fill", 1041, 0, 60, 1080)
+end
+
+function animation()
+    core['animation'] = {}
+    core['animation'].q, core['animation'].s, core['animation'].d,
+    core['animation'].f = 0, 0.2, 1, 1
+    -- love.graphics.setColor(0, 0.2, 1, 1)
+end
+
 function interfaceGameIn.keypressed(myKey)
     if myKey == "q" then
-        if key.checkClicked(551) == 1 then
+        if key.checkClicked(800) == 1 then
             core.score = core.score + 100
             core.combo = core.combo + 1
         else
@@ -46,7 +57,7 @@ function interfaceGameIn.keypressed(myKey)
         end
     end
     if myKey == "s" then
-        if key.checkClicked(631) == 1 then
+        if key.checkClicked(880) == 1 then
             core.score = core.score + 100
             core.combo = core.combo + 1
         else
@@ -54,7 +65,7 @@ function interfaceGameIn.keypressed(myKey)
         end
     end
     if myKey == "d" then
-        if key.checkClicked(711) == 1 then
+        if key.checkClicked(960) == 1 then
             core.score = core.score + 100
             core.combo = core.combo + 1
         else
@@ -62,7 +73,7 @@ function interfaceGameIn.keypressed(myKey)
         end
     end
     if myKey == "f" then
-        if key.checkClicked(792) == 1 then
+        if key.checkClicked(1041) == 1 then
             core.score = core.score + 100
             core.combo = core.combo + 1
         else
@@ -83,21 +94,9 @@ function interfaceGameIn.keypressed(myKey)
         core.f = 1
     end
     animation()
-end
-
-function core.ui()
-    love.graphics.setColor(255, 255, 255, 0.5) -- couleurs corde de la guitare
-    love.graphics.rectangle("fill", 551, 0, 60, 800)
-    love.graphics.rectangle("fill", 631, 0, 60, 800)
-    love.graphics.rectangle("fill", 711, 0, 60, 800)
-    love.graphics.rectangle("fill", 792, 0, 60, 800)
-end
-
-function animation()
-    core['animation'] = {}
-    core['animation'].q, core['animation'].s , core['animation'].d,
-    core['animation'].f = 0, 0.2, 1, 1
-    -- love.graphics.setColor(0, 0.2, 1, 1)
+    if key == "escape" then
+        CURRENT_SCREEN = "interfaceGameMenu"
+    end
 end
 
 function interfaceGameIn.keyreleased(key)
@@ -115,8 +114,33 @@ function interfaceGameIn.keyreleased(key)
     end
 end
 
+function key.checkClicked(x)
+    for i = 0, core.touch do
+        if (buf[i] ~= nil and buf[i].x == x and buf[i].y > 500 and buf[i].y < 550) then
+            buf[i].y = nil
+            buf[i].x = nil
+            buf[i] = nil
+            return (1)
+        end
+    end
+    return(0)
+end
+
+function key.fadeOut()
+    for i = 0, core.touch do
+        if (buf[i] ~= nil and buf[i].anim < 1) then
+            buf[i].anim = buf[i].anim - 0.1
+        end
+        if (buf[i] ~= nil and buf[i].anim == 0) then
+            buf[i].y = nil
+            buf[i].x = nil
+            buf[i] = nil
+        end
+    end
+end
+
 function interfaceGameIn.draw()
-    --love.graphics.draw(core.logo2, 0, 0)
+    love.graphics.draw(core.imgGameBackground, 0, 0)
     love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 100, 100)
     core.ui()
 
@@ -126,7 +150,7 @@ function interfaceGameIn.draw()
         if (buf[i] ~= nil) then
             love.graphics.setColor(255, 0,0, 1)
             love.graphics.rectangle("fill", buf[i].x, buf[i].y, 50, 30)
-            if buf[i].y == 580 and core.score>0 then
+            if buf[i].y == 850 and core.score > 0 then
                 core.score = core.score - 10
             end
         end
@@ -134,11 +158,11 @@ function interfaceGameIn.draw()
 
 
     love.graphics.setColor(255, 255, 255 ,1)	-- couleur corde horizontal
-    love.graphics.rectangle("fill", 551, 512, 301, 38) -- corde horizontal
+    love.graphics.rectangle("fill", 800, 800, 301, 38) -- corde horizontal
 
     -- Score Part
-    love.graphics.print("SCORE:", 986, 318, 0, 6, 6)
-    love.graphics.print(core.score, 986,368, 0, 6, 6)
+    love.graphics.print("SCORE:", 1600, 318, 0, 6, 6)
+    love.graphics.print(core.score, 1600, 380, 0, 6, 6)
     love.graphics.setColor(255, 0, 0, 1)
 
     -- Combo part
@@ -147,19 +171,22 @@ function interfaceGameIn.draw()
 
     if core.q == 1 then
         love.graphics.setColor(1, 0, 0, 1)
-        love.graphics.rectangle("fill", 551, 510, 60, 40)
+        love.graphics.rectangle("fill", 800, 800, 60, 40)
     end
+
     if core.s == 1 then
         love.graphics.setColor(1, 1, 0, 1)
-        love.graphics.rectangle("fill", 631, 510, 60, 40)
+        love.graphics.rectangle("fill", 880, 800, 60, 40)
     end
+
     if core.d == 1 then
         love.graphics.setColor(0, 1, 0, 1)
-        love.graphics.rectangle("fill", 711, 510, 60, 40)
+        love.graphics.rectangle("fill", 960, 800, 60, 40)
     end
+
     if core.f == 1 then
         love.graphics.setColor(0, 0, 1, 1)
-        love.graphics.rectangle("fill", 792, 510, 60, 40)
+        love.graphics.rectangle("fill", 1041, 800, 60, 40)
     end
 end
 
@@ -171,9 +198,11 @@ function interfaceGameIn.update(dt)
             love.audio.stop()
             core.scene = 0
         end
+
         key.appendBuffer()
         key.scrolling()
         memoryCleaner()
+
         --core["music"] = love.audio.newSource("/sound/AlanWalkerGuitar.mp3", 'stream')
         --love.audio.play(core.music)
     end

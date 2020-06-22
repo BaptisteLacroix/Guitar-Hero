@@ -12,7 +12,7 @@ function config.getCore()
 end
 
 function config.load()
-    --core
+    -- core
     -- love.graphics.setBackgroundColor(0.443, 0.254, 0.117, 1)  -- Couleur de fond
     core["scene"] = 0 -- Scene : menu /game /other
     --core[""]
@@ -22,7 +22,7 @@ function config.load()
     core["score"] = 0
     core["combo"] = 0
     core["startTime"] = 0
-    core["logo2"] = love.graphics.newImage("/img/5.png")
+    core["imgGameBackground"] = love.graphics.newImage("/img/gameBackground.jpg")
     core["endTime"] = 215
     love.keyboard.setKeyRepeat(false)
     core["q"] = 0

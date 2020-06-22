@@ -86,8 +86,7 @@ function interfaceGameMenu.load()
     table.insert(buttons, interfaceGameMenu.newButton(
             "Settings",
             function()
-                print("going to Settings menu")
-                --core.drawSceneSettings()
+                -- CURRENT_SCREEN == "interfaceGameSettings"
             end))
 
     table.insert(buttons, interfaceGameMenu.newButton(

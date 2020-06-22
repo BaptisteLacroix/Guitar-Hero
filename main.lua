@@ -46,31 +46,6 @@ function memoryCleaner()
 	end
 end
 
-function key.checkClicked(x)
-	for i = 0, core.touch do
-		if (buf[i] ~= nil and buf[i].x == x and buf[i].y > 500 and buf[i].y < 550) then
-			buf[i].y = nil
-			buf[i].x = nil
-			buf[i] = nil
-			return (1)
-		end
-	end
-	return(0)
-end
-
-function key.fadeOut()
-	for i = 0, core.touch do
-		if (buf[i] ~= nil and buf[i].anim < 1) then
-			buf[i].anim = buf[i].anim - 0.1
-		end
-		if (buf[i] ~= nil and buf[i].anim == 0) then
-			buf[i].y = nil
-			buf[i].x = nil
-			buf[i] = nil
-		end
-	end
-end
-
 function love.load()
 	-- params
 	success = love.window.setMode(1920,1080)
@@ -104,5 +79,7 @@ function love.keypressed(key)
 		interfaceGameMenu.keypressed(key)
 	elseif CURRENT_SCREEN == "interfaceGameIn" then
 		interfaceGameIn.keypressed(key)
+	elseif key == "escape" then
+		CURRENT_SCREEN = "interfaceGameMenu"
 	end
 end
