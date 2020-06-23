@@ -4,6 +4,7 @@ local core = {}
 local key = {}
 local buf = {}
 local buttons = {}
+local speed = 0
 
 -- width, height = love.window.getDimensions()
 
@@ -30,6 +31,14 @@ function config.load()
     core["d"] = 0
     core["f"] = 0
     core["logo"] = love.graphics.newImage("/img/2.jpg") -- affichage image
+end
+
+function config.setSpeed(newSpeed)
+    speed = newSpeed
+end
+
+function config.getSpeed()
+    return speed
 end
 
 function config.getKey()

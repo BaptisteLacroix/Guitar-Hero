@@ -80,19 +80,22 @@ function interfaceGameInDifficulty.load()
     table.insert(buttons, interfaceGameInDifficulty.newButton(
             "Easy",
             function()
-                CURRENT_SCREEN = "interfaceGameInEasy"
+                config.setSpeed(1)
+                CURRENT_SCREEN = "interfaceGameIn"
             end))
 
     table.insert(buttons, interfaceGameInDifficulty.newButton(
             "Normal",
             function()
+                config.setSpeed(3)
                 CURRENT_SCREEN = "interfaceGameIn"
             end))
 
     table.insert(buttons, interfaceGameInDifficulty.newButton(
             "Hard",
             function()
-                CURRENT_SCREEN = "interfaceGameInHard"
+                config.setSpeed(5)
+                CURRENT_SCREEN = "interfaceGameIn"
             end))
 
     table.insert(buttons, interfaceGameInDifficulty.newButton(
@@ -105,12 +108,8 @@ end
 function interfaceGameInDifficulty.update(dt)
     if CURRENT_SCREEN == "interfaceGameSettings" then
         interfaceGameSettings.draw()
-    elseif CURRENT_SCREEN == "interfaceGameInEasy" then
-        interfaceGameInEasy.draw()
     elseif CURRENT_SCREEN == "interfaceGameIn" then
         interfaceGameIn.draw()
-    elseif CURRENT_SCREEN == "interfaceGameInHard" then
-        interfaceGameInHard.draw()
     end
 end
 

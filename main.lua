@@ -76,10 +76,6 @@ function love.update(dt)
 		interfaceGameInDifficulty.update(dt)
 	elseif CURRENT_SCREEN == "interfaceGameIn" then
 		interfaceGameIn.update(dt)
-	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
-		interfaceGameInEasy.update(dt)
-	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
-		interfaceGameInHard.update(dt)
 	end
 end
 
@@ -92,29 +88,17 @@ function love.draw()
 		interfaceGameInDifficulty.draw()
 	elseif CURRENT_SCREEN == "interfaceGameIn" then
 		interfaceGameIn.draw()
-	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
-		interfaceGameInEasy.draw()
-	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
-		interfaceGameInHard.draw()
 	end
 end
 
 function love.keypressed(myKey)
 	if CURRENT_SCREEN == "interfaceGameIn" then
 		interfaceGameIn.keypressed(myKey)
-	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
-		interfaceGameInEasy.keypressed(myKey)
-	elseif CURRENT_SCREEN == "interfaceGameInHard" then
-		interfaceGameInHard.keypressed(myKey)
 	end
 end
 
 function love.keyreleased(key)
 	if CURRENT_SCREEN == "interfaceGameIn" then
 		interfaceGameIn.keyreleased(key)
-	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
-		interfaceGameInEasy.keyreleased(key)
-	elseif CURRENT_SCREEN == "interfaceGameInHard" then
-		interfaceGameInHard.keyreleased(key)
 	end
 end

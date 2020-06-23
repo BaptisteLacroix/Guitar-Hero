@@ -80,7 +80,8 @@ function interfaceGameMenu.load()
     table.insert(buttons, interfaceGameMenu.newButton(
             "Start Game",
             function()
-                CURRENT_SCREEN = "interfaceGameInEasy"
+                config.setSpeed(3)
+                CURRENT_SCREEN = "interfaceGameIn"
             end))
 
     table.insert(buttons, interfaceGameMenu.newButton(
@@ -97,7 +98,7 @@ function interfaceGameMenu.load()
 end
 
 function interfaceGameMenu.update(dt)
-    if CURRENT_SCREEN == "interfaceGameInEasy" then
+    if CURRENT_SCREEN == "interfaceGameIn" then
         interfaceGameIn.draw()
     elseif CURRENT_SCREEN == "interfaceGameSettings" then
         interfaceGameSettings.draw()

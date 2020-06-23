@@ -20,8 +20,9 @@ end
 function key.scrolling()
     for i =0,core.touch do
         -- Scrolling objects
+        print(config.getSpeed())
         if (buf[i] ~= nil) then
-            buf[i].y = buf[i].y + 3 --speed
+            buf[i].y = buf[i].y + config.getSpeed() --speed
         end
         -- Reset objects
         if (buf[i] ~= nil and buf[i].y == 600) then
