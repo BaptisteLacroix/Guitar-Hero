@@ -1,4 +1,4 @@
-local config = require("config")
+local config = require("./config")
 local core = config.getCore()
 local key = config.getKey()
 local buf = config.getBuf()
@@ -141,10 +141,10 @@ end
 
 function interfaceGameInEasy.draw()
 
-    --local mouseX, mouseY = love.mouse.getPosition()
-    --print(mouseX,mouseY)
+    local mouseX, mouseY = love.mouse.getPosition()
+    print(mouseX,mouseY)
 
-    love.graphics.draw(core.imgGameBackground, 0, 0)
+    --love.graphics.draw(core.imgGameBackground, 0, 0)
     love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 100, 100)
     core.ui()
 

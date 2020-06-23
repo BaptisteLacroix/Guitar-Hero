@@ -80,7 +80,7 @@ function interfaceGameMenu.load()
     table.insert(buttons, interfaceGameMenu.newButton(
             "Start Game",
             function()
-                CURRENT_SCREEN = "interfaceGameIn"
+                CURRENT_SCREEN = "interfaceGameInEasy"
             end))
 
     table.insert(buttons, interfaceGameMenu.newButton(
@@ -97,7 +97,7 @@ function interfaceGameMenu.load()
 end
 
 function interfaceGameMenu.update(dt)
-    if CURRENT_SCREEN == "interfaceGameIn" then
+    if CURRENT_SCREEN == "interfaceGameInEasy" then
         interfaceGameIn.draw()
     elseif CURRENT_SCREEN == "interfaceGameSettings" then
         interfaceGameSettings.draw()

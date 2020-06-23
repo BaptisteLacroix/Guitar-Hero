@@ -2,11 +2,11 @@
 
 local config = require("config")
 interfaceGameMenu = require("menu")
-interfaceGameIn = require("game")
-interfaceGameInEasy = require("./difficulty/gameEasy")
-interfaceGameInHard = require(".difficulty/gameHard")
 interfaceGameSettings = require("./settings/settings")
 interfaceGameInDifficulty = require("./settings/settingsDifficulty")
+interfaceGameIn = require("game")
+interfaceGameInEasy = require("./difficulty/gameEasy")
+interfaceGameInHard = require("./difficulty/gameHard")
 
 
 local core = config.getCore()
@@ -64,7 +64,6 @@ function love.load()
 	interfaceGameMenu.load()
 	interfaceGameSettings.load()
 	interfaceGameInDifficulty.load()
-	--interfaceGameIn.load()
 end
 
 function love.update(dt)
@@ -100,19 +99,13 @@ function love.draw()
 	end
 end
 
-function love.keypressed(mykey)
-	if CURRENT_SCREEN == "interfaceGameMenu" then
-		interfaceGameMenu.keypressed(mykey)
-	elseif CURRENT_SCREEN == "interfaceGameSettings" then
-		interfaceGameSettings.keypressed(mykey)
-	elseif CURRENT_SCREEN == "interfaceGameInDifficulty" then
-		interfaceGameInDifficulty.keypressed(mykey)
-	elseif CURRENT_SCREEN == "interfaceGameIn" then
-		interfaceGameIn.keypressed(mykey)
+function love.keypressed(myKey)
+	if CURRENT_SCREEN == "interfaceGameIn" then
+		interfaceGameIn.keypressed(myKey)
 	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
-		interfaceGameInEasy.keypressed(mykey)
-	elseif CURRENT_SCREEN == "interfaceGameInEasy" then
-		interfaceGameInHard.keypressed(mykey)
+		interfaceGameInEasy.keypressed(myKey)
+	elseif CURRENT_SCREEN == "interfaceGameInHard" then
+		interfaceGameInHard.keypressed(myKey)
 	end
 end
 

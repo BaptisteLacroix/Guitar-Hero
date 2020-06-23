@@ -11,7 +11,7 @@ local font = nil
 
 BUTTON_HEIGHT = 64
 
-function interfaceGameInDifficulty.newButton()
+function interfaceGameInDifficulty.newButton(text, fn)
     return{
         text = text,
         fn = fn,
@@ -94,10 +94,24 @@ function interfaceGameInDifficulty.load()
             function()
                 CURRENT_SCREEN = "interfaceGameInHard"
             end))
+
+    table.insert(buttons, interfaceGameInDifficulty.newButton(
+            "Back",
+            function()
+                CURRENT_SCREEN = "interfaceGameSettings"
+            end))
 end
 
 function interfaceGameInDifficulty.update(dt)
-
+    if CURRENT_SCREEN == "interfaceGameSettings" then
+        interfaceGameSettings.draw()
+    elseif CURRENT_SCREEN == "interfaceGameInEasy" then
+        interfaceGameInEasy.draw()
+    elseif CURRENT_SCREEN == "interfaceGameIn" then
+        interfaceGameIn.draw()
+    elseif CURRENT_SCREEN == "interfaceGameInHard" then
+        interfaceGameInHard.draw()
+    end
 end
 
 return interfaceGameInDifficulty

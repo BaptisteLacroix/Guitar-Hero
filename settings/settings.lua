@@ -99,6 +99,10 @@ end
 function interfaceGameSettings.update(dt)
     if CURRENT_SCREEN == "interfaceGameInDifficulty" then
         interfaceGameInDifficulty.draw()
+    elseif CURRENT_SCREEN == "interfaceGameMenu" then
+        interfaceGameMenu.draw()
+    elseif CURRENT_SCREEN == "interfaceGameSong" then
+        interfaceGameSong.draw()
     end
 end
 
