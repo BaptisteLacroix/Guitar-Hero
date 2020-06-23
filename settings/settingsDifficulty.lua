@@ -1,8 +1,4 @@
 local config = require("./config")
-local core = config.getCore()
-local key = config.getKey()
-local buf = config.getBuf()
-local buttons = config.getButtons()
 
 local interfaceGameInDifficulty = {}
 
@@ -103,14 +99,6 @@ function interfaceGameInDifficulty.load()
             function()
                 CURRENT_SCREEN = "interfaceGameSettings"
             end))
-end
-
-function interfaceGameInDifficulty.update(dt)
-    if CURRENT_SCREEN == "interfaceGameSettings" then
-        interfaceGameSettings.draw()
-    elseif CURRENT_SCREEN == "interfaceGameIn" then
-        interfaceGameIn.draw()
-    end
 end
 
 return interfaceGameInDifficulty

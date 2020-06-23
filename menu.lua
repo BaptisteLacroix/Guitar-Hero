@@ -1,8 +1,4 @@
 local config = require("config")
-local core = config.getCore()
-local key = config.getKey()
-local buf = config.getBuf()
-local buttons = config.getButtons()
 
 local interfaceGameMenu = {}
 
@@ -81,13 +77,13 @@ function interfaceGameMenu.load()
             "Start Game",
             function()
                 config.setSpeed(3)
-                CURRENT_SCREEN = "interfaceGameIn"
+                config.setCurrentInterface(interfaceGameIn)
             end))
 
     table.insert(buttons, interfaceGameMenu.newButton(
             "Settings",
             function()
-                CURRENT_SCREEN = "interfaceGameSettings"
+                config.setCurrentInterface(interfaceGameSettings)
             end))
 
     table.insert(buttons, interfaceGameMenu.newButton(
@@ -97,12 +93,5 @@ function interfaceGameMenu.load()
             end))
 end
 
-function interfaceGameMenu.update(dt)
-    if CURRENT_SCREEN == "interfaceGameIn" then
-        interfaceGameIn.draw()
-    elseif CURRENT_SCREEN == "interfaceGameSettings" then
-        interfaceGameSettings.draw()
-    end
-end
 
 return interfaceGameMenu

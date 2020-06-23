@@ -1,8 +1,4 @@
 local config = require("./config")
-local core = config.getCore()
-local key = config.getKey()
-local buf = config.getBuf()
-local buttons = config.getButtons()
 
 local interfaceGameSettings = {}
 
@@ -22,6 +18,7 @@ function interfaceGameSettings.newButton(text, fn)
 end
 
 function interfaceGameSettings.draw()
+    print("interfaceGameSettings.draw()")
     local button_width = 1920 * (1/3)
     local margin = 16
 
@@ -75,6 +72,7 @@ function interfaceGameSettings.draw()
 end
 
 function interfaceGameSettings.load()
+    print("interfaceGameSettings.load()")
     font = love.graphics.newFont(32)
 
     table.insert(buttons, interfaceGameSettings.newButton(
@@ -94,16 +92,6 @@ function interfaceGameSettings.load()
             function()
                 CURRENT_SCREEN = "interfaceGameMenu"
             end))
-end
-
-function interfaceGameSettings.update(dt)
-    if CURRENT_SCREEN == "interfaceGameInDifficulty" then
-        interfaceGameInDifficulty.draw()
-    elseif CURRENT_SCREEN == "interfaceGameMenu" then
-        interfaceGameMenu.draw()
-    elseif CURRENT_SCREEN == "interfaceGameSong" then
-        interfaceGameSong.draw()
-    end
 end
 
 return interfaceGameSettings

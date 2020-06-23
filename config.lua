@@ -5,6 +5,7 @@ local key = {}
 local buf = {}
 local buttons = {}
 local speed = 0
+local currentInterface = nil
 
 -- width, height = love.window.getDimensions()
 
@@ -51,6 +52,14 @@ end
 
 function config.getButtons()
     return buttons
+end
+
+function config.getCurrentInterface()
+    return currentInterface
+end
+
+function config.setCurrentInterface(newInterface)
+    currentInterface = newInterface
 end
 
 return config

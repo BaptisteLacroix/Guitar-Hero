@@ -11,9 +11,6 @@ interfaceGameInHard = require("./difficulty/gameHard")
 
 local core = config.getCore()
 local key = config.getKey()
-local buf = config.getBuf()
-local buttons = config.getButtons()
-local currentInterface = {}
 
 
 -- Color multipler
@@ -56,49 +53,33 @@ function love.load()
 	-- params
 	success = love.window.setMode(1920,1080)
 	--constantes
-	CURRENT_SCREEN = "interfaceGameMenu"
-	--currentInterface = interfaceGameMenu
-
+	config.setCurrentInterface(interfaceGameMenu)
 	--import states.load
 	config.load()
-	interfaceGameMenu.load()
-	interfaceGameSettings.load()
-	interfaceGameInDifficulty.load()
+	config.getCurrentInterface().load()
 end
 
 function love.update(dt)
-	--currentInterface.update(dt)
-	if CURRENT_SCREEN == "interfaceGameMenu" then
-		interfaceGameMenu.update(dt)
-	elseif CURRENT_SCREEN == "interfaceGameSettings" then
-		interfaceGameSettings.update(dt)
-	elseif CURRENT_SCREEN == "interfaceGameInDifficulty" then
-		interfaceGameInDifficulty.update(dt)
-	elseif CURRENT_SCREEN == "interfaceGameIn" then
-		interfaceGameIn.update(dt)
+	interface = config.getCurrentInterface()
+	if interface == interfaceGameIn then
+		interface.update(dt)
 	end
 end
 
 function love.draw()
-	if CURRENT_SCREEN == "interfaceGameMenu" then
-		interfaceGameMenu.draw()
-	elseif CURRENT_SCREEN == "interfaceGameSettings" then
-		interfaceGameSettings.draw()
-	elseif CURRENT_SCREEN == "interfaceGameInDifficulty" then
-		interfaceGameInDifficulty.draw()
-	elseif CURRENT_SCREEN == "interfaceGameIn" then
-		interfaceGameIn.draw()
-	end
+	config.getCurrentInterface().draw()
 end
 
-function love.keypressed(myKey)
-	if CURRENT_SCREEN == "interfaceGameIn" then
-		interfaceGameIn.keypressed(myKey)
+function love.keypressed(key)
+	interface = config.getCurrentInterface()
+	if interface == interfaceGameIn then
+		interface.keypressed(key)
 	end
 end
 
 function love.keyreleased(key)
-	if CURRENT_SCREEN == "interfaceGameIn" then
-		interfaceGameIn.keyreleased(key)
+	interface = config.getCurrentInterface()
+	if interface == interfaceGameIn then
+		interface.keyreleased(key)
 	end
 end

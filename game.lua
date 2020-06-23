@@ -2,7 +2,6 @@ local config = require("config")
 local core = config.getCore()
 local key = config.getKey()
 local buf = config.getBuf()
-local buttons = config.getButtons()
 
 local interfaceGameIn = {}
 
@@ -20,7 +19,7 @@ end
 function key.scrolling()
     for i =0,core.touch do
         -- Scrolling objects
-        print(config.getSpeed())
+        -- print(config.getSpeed())
         if (buf[i] ~= nil) then
             buf[i].y = buf[i].y + config.getSpeed() --speed
         end
@@ -96,7 +95,7 @@ function interfaceGameIn.keypressed(myKey)
     end
     animation()
     if key == "escape" then
-        CURRENT_SCREEN = "interfaceGameMenu"
+        config.setCurrentInterface(interfaceGameMenu)
     end
 end
 
@@ -141,14 +140,9 @@ function key.fadeOut()
 end
 
 function interfaceGameIn.draw()
-
-    local mouseX, mouseY = love.mouse.getPosition()
-    print(mouseX,mouseY)
-
     love.graphics.draw(core.imgGameBackground, 0, 0)
     love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 100, 100)
     core.ui()
-
 
     for i = 0, core.touch do
         -- If object exists, print it wish his right color.
@@ -160,7 +154,6 @@ function interfaceGameIn.draw()
             end
         end
     end
-
 
     love.graphics.setColor(255, 255, 255 ,1)	-- couleur corde horizontal
     love.graphics.rectangle("fill", 800, 800, 301, 38) -- corde horizontal
@@ -208,8 +201,8 @@ function interfaceGameIn.update(dt)
         key.scrolling()
         memoryCleaner()
 
-        --core["music"] = love.audio.newSource("/sound/AlanWalkerGuitar.mp3", 'stream')
-        --love.audio.play(core.music)
+        -- core["music"] = love.audio.newSource("/sound/Music/AlanWalkerGuitar.mp3", 'stream')
+        -- love.audio.play(core.music)
     end
     if core.scene == 0 then
         if love.mouse.isDown(1) then
