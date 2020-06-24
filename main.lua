@@ -54,8 +54,9 @@ function love.load()
 	success = love.window.setMode(1920,1080)
 	--constantes
 	config.setCurrentInterface(interfaceGameMenu)
-	--import states.load
+	-- Charger toutes interfaces ?
 	config.load()
+	interfaceGameSettings.load()
 	config.getCurrentInterface().load()
 end
 
