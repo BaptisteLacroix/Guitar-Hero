@@ -5,8 +5,6 @@ interfaceGameMenu = require("menu")
 interfaceGameSettings = require("./settings/settings")
 interfaceGameInDifficulty = require("./settings/settingsDifficulty")
 interfaceGameIn = require("game")
-interfaceGameInEasy = require("./difficulty/gameEasy")
-interfaceGameInHard = require("./difficulty/gameHard")
 
 
 local core = config.getCore()

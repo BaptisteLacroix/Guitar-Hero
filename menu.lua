@@ -14,6 +14,7 @@ function interfaceGameMenu.load()
             "Start Game",
             function()
                 config.setSpeed(3)
+                config.getScoreDown(100)
                 config.setCurrentInterface(interfaceGameIn)
             end))
 
@@ -21,6 +22,7 @@ function interfaceGameMenu.load()
             "Settings",
             function()
                 config.setCurrentInterface(interfaceGameSettings)
+                -- interfaceGameSettings.load()
             end))
 
     table.insert(geometry.getButtons(), geometry.newButton(

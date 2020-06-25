@@ -4,6 +4,7 @@ local geometry = require(".geometry")
 local interfaceGameInDifficulty = {}
 
 function interfaceGameInDifficulty.draw()
+    print("interfaceGameInDifficulty draw")
     geometry.drawButton()
 end
 
@@ -13,27 +14,30 @@ function interfaceGameInDifficulty.load()
             "Easy",
             function()
                 config.setSpeed(1)
-                CURRENT_SCREEN = "interfaceGameIn"
+                config.getScoreDown(10)
+                config.setCurrentInterface(interfaceGameIn)
             end))
 
     table.insert(geometry.getButtons(), geometry.newButton(
             "Normal",
             function()
                 config.setSpeed(3)
-                CURRENT_SCREEN = "interfaceGameIn"
+                config.getScoreDown(100)
+                config.setCurrentInterface(interfaceGameIn)
             end))
 
     table.insert(geometry.getButtons(), geometry.newButton(
             "Hard",
             function()
                 config.setSpeed(5)
-                CURRENT_SCREEN = "interfaceGameIn"
+                config.getScoreDown(200)
+                config.setCurrentInterface(interfaceGameIn)
             end))
 
     table.insert(geometry.getButtons(), geometry.newButton(
             "Back",
             function()
-                CURRENT_SCREEN = "interfaceGameSettings"
+                config.setCurrentInterface(interfaceGameSettings)
             end))
 end
 

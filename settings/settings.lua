@@ -30,6 +30,7 @@ function interfaceGameSettings.load()
             "Back",
             function()
                 config.setCurrentInterface(interfaceGameMenu)
+                print("BackToMenu")
             end))
 end
 
