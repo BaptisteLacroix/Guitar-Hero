@@ -6,7 +6,7 @@ interfaceGameMenu = require("menu")
 local interfaceGameSettings = {}
 
 function interfaceGameSettings.draw()
-    print("interfaceGameSettings draw")
+    -- print("interfaceGameSettings draw")
     geometry.drawButton()
 end
 

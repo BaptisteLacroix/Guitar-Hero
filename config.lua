@@ -62,12 +62,12 @@ function config.getButtons()
     return buttons
 end
 
-function config.getCurrentInterface()
-    return currentInterface
-end
-
 function config.setCurrentInterface(newInterface)
     currentInterface = newInterface
+end
+
+function config.getCurrentInterface()
+    return currentInterface
 end
 
 return config

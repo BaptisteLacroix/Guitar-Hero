@@ -14,6 +14,8 @@ local key = config.getKey()
 -- Color multipler
 local COLOR_MUL = love._version >= "11.0" and 1 or 255
 
+-- Buffer part
+
 function key.setting()
 	-- Setup keys config
 	key[0], key[1], key[2], key[3] = {}, {}, {}, {}
@@ -47,6 +49,8 @@ function memoryCleaner()
 	end
 end
 
+--
+
 function love.load()
 	-- params
 	success = love.window.setMode(1920,1080)
@@ -66,8 +70,11 @@ function love.update(dt)
 end
 
 function love.draw()
+	love.event.clear()
 	config.getCurrentInterface().draw()
 end
+
+-- Game Part
 
 function love.keypressed(key)
 	interface = config.getCurrentInterface()

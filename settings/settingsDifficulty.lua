@@ -14,7 +14,7 @@ function interfaceGameInDifficulty.load()
             "Easy",
             function()
                 config.setSpeed(1)
-                config.getScoreDown(10)
+                config.setScoreDown(10)
                 config.setCurrentInterface(interfaceGameIn)
             end))
 
@@ -22,7 +22,7 @@ function interfaceGameInDifficulty.load()
             "Normal",
             function()
                 config.setSpeed(3)
-                config.getScoreDown(100)
+                config.setScoreDown(100)
                 config.setCurrentInterface(interfaceGameIn)
             end))
 
@@ -30,7 +30,7 @@ function interfaceGameInDifficulty.load()
             "Hard",
             function()
                 config.setSpeed(5)
-                config.getScoreDown(200)
+                config.setScoreDown(200)
                 config.setCurrentInterface(interfaceGameIn)
             end))
 
